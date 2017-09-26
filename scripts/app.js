@@ -36,9 +36,21 @@ console.log("Fart Bucket");
 
  }
 
+ class ButtonView {
+ 	render(){
+ 		return `<button>feed</button>
+ 				<button>lights</button>
+ 				<button>play</button>`
+
+
+ 	}
+ }
+
  	const squirtle = new Tomagotchi('squirtle',2,4,5,1);
  	const squirtleView = new TomagotchiView(squirtle);
- 	$('#app').html(squirtleView.render())
+ 	const buttonView = new ButtonView()
+ 	$('#app').html([squirtleView.render(), buttonView.render()])
+
 
 // 	2.Display a character of your choice on the screen to represent your pet
 // 	3.Display the following metrics for your pet. Hunger (1-10 scale), Sleepiness (1-10 scale), Boredom (1-10 scale), Age
