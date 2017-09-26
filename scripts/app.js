@@ -26,11 +26,15 @@ console.log("Fart Bucket");
 	 			this.model = model;
 	 		}
 	 		render(){  
-	 			 return `<h1>${this.model.name}</h1> 
+	 			 const el = $(` <div><h1>${this.model.name}</h1>
+	 			 		<input value="${this.model.name}"/> 
 	 			 		<div>Hunger Level: ${this.model.hunger}</div>
 	 			 		<div>Sleepiness Level: ${this.model.sleepiness}</div> 
 	 			 		<div>Boredom Level: ${this.model.boredom}</div>
-	 			 		<div>Age: ${this.model.age}</div>`
+	 			 		<div>Age: ${this.model.age}</div> 
+	 			 		</div>`)
+	 			 		
+	 			 return el
 
 	 		}
 
@@ -44,13 +48,25 @@ console.log("Fart Bucket");
 
 
  	}
+
  }
+
+
+
 
  	const squirtle = new Tomagotchi('squirtle',2,4,5,1);
  	const squirtleView = new TomagotchiView(squirtle);
  	const buttonView = new ButtonView()
- 	$('#app').html([squirtleView.render(), buttonView.render()])
+ 	const render = () => {
+ 		$('#app').html([squirtleView.render(), buttonView.render()])
+ }
+ 	render();
 
+	$('#app').find('input').on('change',(e)=> {
+	 			 			//e is an event object you need it to make the function work
+	 			 				squirtle.name  = e.target.value
+	 			 				render()
+	 			 		})
 
 // 	2.Display a character of your choice on the screen to represent your pet
 // 	3.Display the following metrics for your pet. Hunger (1-10 scale), Sleepiness (1-10 scale), Boredom (1-10 scale), Age
