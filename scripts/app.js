@@ -16,25 +16,32 @@ console.log("Fart Bucket");
  			this.sleepiness = sleepiness;
  			this.boredom = boredom;
  			this.age = age;
+ 			this.dead = false;
+
  		}
  		death(){
-
+ 			this.dead = true;
  		}
  	}
  class TomagotchiView {
 	 		constructor(model){
 	 			this.model = model;
 	 		}
-	 		render(){  
-	 			 const el = $(` <div><h1>${this.model.name}</h1>
+	 		render(){  //this method controls what's on the page 
+	 			 
+	 			 if(this.model.dead){
+	 			 	return `<h1>${this.model.name} is dead</h1>`
+
+	 			 }else{
+
+	 			 	return ` <div><h1>${this.model.name}</h1>
 	 			 		<input value="${this.model.name}"/> 
 	 			 		<div>Hunger Level: ${this.model.hunger}</div>
 	 			 		<div>Sleepiness Level: ${this.model.sleepiness}</div> 
 	 			 		<div>Boredom Level: ${this.model.boredom}</div>
 	 			 		<div>Age: ${this.model.age}</div> 
-	 			 		</div>`)
-	 			 		
-	 			 return el
+	 			 		</div>`
+	 			 }
 
 	 		}
 
@@ -69,23 +76,35 @@ console.log("Fart Bucket");
 	 			 		})
 	setInterval(()=>{
 		squirtle.age += 1
+		if(squirtle.age === 10){
+			squirtle.death()
+		}
 		render()
 	},1000 * 60)
 
 	setInterval(()=>{
-		squirtle.hunger += 1
+		squirtle.hunger += 3
+		if(squirtle.hunger === 10){
+			squirtle.death()
+		}
 		render()
 	},3000)
 	setInterval(()=>{
-		squirtle.sleepiness += 1
+		squirtle.sleepiness += 2
+			if(squirtle.sleepiness === 10){
+			squirtle.death()
+		}
 		render()
-	},5000)
+	},1000)
 
 	setInterval(()=>{
-		squirtle.boredeom += 1
+		squirtle.boredeom += 4
+			if(squirtle.boredeom === 10){
+			squirtle.death()
+		}
 		render()
-	},4000)
-	
+	},2000)
+
 
 
 // 	2.Display a character of your choice on the screen to represent your pet
