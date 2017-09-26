@@ -66,14 +66,15 @@ console.log("Fart Bucket");
  	const buttonView = new ButtonView()
  	const render = () => {
  		$('#app').html([squirtleView.render(), buttonView.render()])
- }
- 	render();
-
-	$('#app').find('input').on('change',(e)=> {
+ 		$('#app').find('input').on('change',(e)=> {
 	 			 			//e is an event object you need it to make the function work
 	 			 				squirtle.name  = e.target.value
 	 			 				render()
 	 			 		})
+ }
+ 	render();
+
+	
 	setInterval(()=>{
 		squirtle.age += 1
 		if(squirtle.age === 10){
@@ -83,27 +84,27 @@ console.log("Fart Bucket");
 	},1000 * 60)
 
 	setInterval(()=>{
-		squirtle.hunger += 3
+		squirtle.hunger += 1
 		if(squirtle.hunger === 10){
 			squirtle.death()
 		}
 		render()
-	},3000)
+	},5000)
 	setInterval(()=>{
-		squirtle.sleepiness += 2
+		squirtle.sleepiness += 1
 			if(squirtle.sleepiness === 10){
 			squirtle.death()
 		}
 		render()
-	},1000)
+	},4000)
 
 	setInterval(()=>{
-		squirtle.boredeom += 4
+		squirtle.boredeom += 1
 			if(squirtle.boredeom === 10){
 			squirtle.death()
 		}
 		render()
-	},2000)
+	},4000)
 
 
 
