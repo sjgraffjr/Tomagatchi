@@ -68,9 +68,26 @@ console.log("Fart Bucket");
 	 			 				render()
 	 			 		})
 	setInterval(()=>{
-		squirtle.age += 5
+		squirtle.age += 1
 		render()
-	},10000)
+	},1000 * 60)
+
+	setInterval(()=>{
+		squirtle.hunger += 1
+		render()
+	},3000)
+	setInterval(()=>{
+		squirtle.sleepiness += 1
+		render()
+	},5000)
+
+	setInterval(()=>{
+		squirtle.boredeom += 1
+		render()
+	},4000)
+	
+
+
 // 	2.Display a character of your choice on the screen to represent your pet
 // 	3.Display the following metrics for your pet. Hunger (1-10 scale), Sleepiness (1-10 scale), Boredom (1-10 scale), Age
 
