@@ -82,6 +82,24 @@ console.log("Fart Bucket");
 	 			 				squirtle.name  = e.target.value
 	 			 				render()
 	 			 		})
+ 		// find all the buttons on the page
+ 		$('button').on('click',(e)=>{
+ 			if(e.currentTarget.textContent === 'feed'){
+ 				squirtle.hunger -= 1
+ 			}else if(e.currentTarget.textContent === 'play'){
+ 				squirtle.boredom -= 1
+
+ 			}else if(e.currentTarget.textContent === 'lights'){
+ 				$('#app').toggleClass('dark')
+
+ 			}
+ 			render();
+ 		})
+ 		// listen for click events on those buttons
+ 		// in the click event listner if the button text is feed decrease hunger, if button text is lights backgroung black
+ 		// hunger and play if button is clicked hunger decrease. if play clicked boredom decrease
+ 		//
+
  }
  	render();
 
