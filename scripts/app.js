@@ -22,6 +22,15 @@ console.log("Fart Bucket");
  		death(){
  			this.dead = true;
  		}
+ 		image(){
+ 			if(this.age < 5){
+ 				return 'https://i.pinimg.com/originals/93/48/9a/93489a169bffb800bcccef095c388fe0.png'
+ 			}else if(this.age < 8){
+ 				return 'https://cdn.bulbagarden.net/upload/thumb/0/0c/008Wartortle.png/250px-008Wartortle.png'
+ 			}else{
+ 				return 'https://pre00.deviantart.net/f57c/th/pre/i/2013/247/4/6/mega_blastoise_by_protocol00-d6l1fpt.png'
+ 			}
+ 		}
  	}
  class TomagotchiView {
 	 		constructor(model){
@@ -34,7 +43,9 @@ console.log("Fart Bucket");
 
 	 			 }else{
 
-	 			 	return ` <div><h1>${this.model.name}</h1>
+	 			 	return ` <div>
+	 			 		<h1>${this.model.name}</h1>
+	 			 		<img src="${this.model.image()}" width="200px" height="200px"/>
 	 			 		<input value="${this.model.name}"/> 
 	 			 		<div>Hunger Level: ${this.model.hunger}</div>
 	 			 		<div>Sleepiness Level: ${this.model.sleepiness}</div> 
@@ -81,7 +92,7 @@ console.log("Fart Bucket");
 			squirtle.death()
 		}
 		render()
-	},1000 * 60)
+	},3000)
 
 	setInterval(()=>{
 		squirtle.hunger += 1
