@@ -9,74 +9,13 @@ console.log("Fart Bucket");
 // Create a repo for your tomagotchi pet
 // make a commit after you finish each one of the following
 // 	1.Create a class for you tomagotchi
- class Tomagotchi {
- 		constructor(name,hunger,sleepiness,boredom,age){
- 			this.name = name;
- 			this.hunger = hunger;
- 			this.sleepiness = sleepiness;
- 			this.boredom = boredom;
- 			this.age = age;
- 			this.dead = false;
 
- 		}
- 		death(){
- 			this.dead = true;
- 		}
- 		image(){
- 			if(this.age < 5){
- 				return 'https://i.pinimg.com/originals/93/48/9a/93489a169bffb800bcccef095c388fe0.png'
- 			}else if(this.age < 8){
- 				return 'https://cdn.bulbagarden.net/upload/thumb/0/0c/008Wartortle.png/250px-008Wartortle.png'
- 			}else{
- 				return 'https://pre00.deviantart.net/f57c/th/pre/i/2013/247/4/6/mega_blastoise_by_protocol00-d6l1fpt.png'
- 			}
- 		}
- 	}
- class TomagotchiView {
-	 		constructor(model){
-	 			this.model = model;
-	 		}
-	 		render(){  //this method controls what's on the page 
-	 			 
-	 			 if(this.model.dead){
-	 			 	return `<h1>${this.model.name} is dead</h1>`
-
-	 			 }else{
-
-	 			 	return ` <div>
-	 			 		<h1>${this.model.name}</h1>
-	 			 		<img src="${this.model.image()}" width="200px" height="200px"/>
-	 			 		<input value="${this.model.name}"/> 
-	 			 		<div>Hunger Level: ${this.model.hunger}</div>
-	 			 		<div>Sleepiness Level: ${this.model.sleepiness}</div> 
-	 			 		<div>Boredom Level: ${this.model.boredom}</div>
-	 			 		<div>Age: ${this.model.age}</div> 
-	 			 		</div>`
-	 			 }
-
-	 		}
-
- }
-
- class ButtonView {
- 	render(){
- 		return `<button>feed</button>
- 				<button>lights</button>
- 				<button>play</button>`
-
-
- 	}
-
- }
-
-
-
-
- 	const squirtle = new Tomagotchi('squirtle',2,4,5,1);
- 	const squirtleView = new TomagotchiView(squirtle);
- 	const buttonView = new ButtonView()
- 	const render = () => {
- 		$('#app').html([squirtleView.render(), buttonView.render()])
+//views build html and models store data
+ 	const squirtle = new Tomagotchi('squirtle',1,1,1,1); //setting up the data in the model
+ 	const squirtleView = new TomagotchiView(squirtle); //setting up a view to build the Html
+ 	const buttonView = new ButtonView() //setting up a another view to build html 
+ 	const render = () => { //the render functions builds the html and put its on the page
+ 		$('#app').html([squirtleView.render(), buttonView.render()])//this calling ButtonView and TomagatchiView
  		$('#app').find('input').on('change',(e)=> {
 	 			 			//e is an event object you need it to make the function work
 	 			 				squirtle.name  = e.target.value
@@ -84,18 +23,19 @@ console.log("Fart Bucket");
 	 			 		})
  		// find all the buttons on the page
  		$('button').on('click',(e)=>{
- 			if(e.currentTarget.textContent === 'feed'){
+ 			if(e.currentTarget.textContent === 'feed'){ // listen for click events on feed button
  				squirtle.hunger -= 1
- 			}else if(e.currentTarget.textContent === 'play'){
+ 			}else if(e.currentTarget.textContent === 'play'){ // listen for click on play button
  				squirtle.boredom -= 1
 
- 			}else if(e.currentTarget.textContent === 'lights'){
- 				$('#app').toggleClass('dark')
+ 			}else if(e.currentTarget.textContent === 'lights'){ // listen for click on play button
+ 				$('#app').toggleClass('dark') //toggleClass turns button and off
+
 
  			}
- 			render();
+ 			render(); //calling the render function
  		})
- 		// listen for click events on those buttons
+ 		
  		// in the click event listner if the button text is feed decrease hunger, if button text is lights backgroung black
  		// hunger and play if button is clicked hunger decrease. if play clicked boredom decrease
  		//
@@ -106,34 +46,38 @@ console.log("Fart Bucket");
 	
 	setInterval(()=>{
 		squirtle.age += 1
-		if(squirtle.age === 10){
-			squirtle.death()
+		if(squirtle.age === 100){
+			squirtle.death() //death is called
 		}
 		render()
-	},3000)
+	},2000)
 
 	setInterval(()=>{
 		squirtle.hunger += 1
 		if(squirtle.hunger === 10){
-			squirtle.death()
+			squirtle.death()  //death is called
 		}
 		render()
 	},5000)
 	setInterval(()=>{
-		squirtle.sleepiness += 1
-			if(squirtle.sleepiness === 10){
-			squirtle.death()
+		if($('#app').hasClass('dark')){
+			squirtle.sleepiness -= 1
+		}else{
+			squirtle.sleepiness += 1
+		}
+		if(squirtle.sleepiness === 10){
+			squirtle.death()  //death is called
 		}
 		render()
-	},4000)
+	},5000)
 
 	setInterval(()=>{
-		squirtle.boredeom += 1
-			if(squirtle.boredeom === 10){
-			squirtle.death()
+		squirtle.boredom += 1
+			if(squirtle.boredom === 10){
+			squirtle.death()  //death is called
 		}
 		render()
-	},4000)
+	},5000)
 
 
 
