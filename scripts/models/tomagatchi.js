@@ -12,15 +12,15 @@ const BLASTIOSE_IMAGE = "https://pre00.deviantart.net/f57c/th/pre/i/2013/247/4/6
 
 	}
 	death(){
-		this.dead = true; //storing death in methoo
+		this.dead = true; //storing death in method
 	}
 	image(){
 		if(this.age < 5){
-			return SQUIRTLE_IMAGE
-		}else if(this.age < 8){
-			return WARTURTLE_IMAGE
+			return SQUIRTLE_IMAGE //squirtle from age 1-4
+		}else if(this.age < 10){
+			return WARTURTLE_IMAGE //warturtle from age 5-9
 		}else{
-			return BLASTIOSE_IMAGE
+			return BLASTIOSE_IMAGE //blastiose from age 10-15
 		}
 	}
 }
