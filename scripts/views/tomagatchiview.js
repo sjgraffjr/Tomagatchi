@@ -6,11 +6,13 @@
 	 			 
 	 			 if(this.model.dead){
 	 			 	return `<h1>${this.model.name} is dead</h1> 
-	 			 	        <img src ="<iframe src="https://giphy.com/embed/26FmPRyuABbuJmIb6" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/26FmPRyuABbuJmIb6">via GIPHY</a></p>`//this says tomagatchi's name is  is dead
+	 			 	        <iframe src="https://giphy.com/embed/26FmPRyuABbuJmIb6" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+	 			 	        `//this says tomagatchi's name is  is dead
 
 	 			 }else{
-
-	 			 	return ` <div class="row">
+	 			 	//wrapped the html in a JQuery element 
+	 			 	//this how this part of the page looks
+	 			 	const $el = $( `<div class="row">
 	 			 		<div class="col-md-8">
 		 			 		<h1>${this.model.name}</h1>
 		 			 		<img  src="${this.model.image()}" width="400px" height="400px"/>         
@@ -22,7 +24,15 @@
 		 			 		<div>Boredom Level: ${this.model.boredom}</div>
 		 			 		<div>Age: ${this.model.age}</div> 
 		 			 	</div>
-	 			 		</div>`
+	 			 		</div>`)
+	 			 	// this is where you listen for events from the user
+	 			 	// this is stuff what the user can do with this part of the page
+	 			 	$el.find('input').on('change',(e)=> { //
+	 			 			//e is an event object you need it to make the function work
+	 			 				this.model.name  = e.target.value
+	 			 				window.render()
+	 			 		})
+	 			 	return $el
 	 			 }	//
 
 	 		}
