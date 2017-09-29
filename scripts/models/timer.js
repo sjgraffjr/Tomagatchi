@@ -38,9 +38,9 @@ class Timer {
 		}, SLEEPINESS_SPEED)
 
 		setInterval(()=>{
-			this.model.boredom += 1
-				if(this.model.boredom === 10){
-				this.model.death()  //death is called
+			model.boredom += 1
+				if(model.boredom === 10){
+				model.death()  //death is called
 			}
 			window.render()//calling the render function because data is changed
 		}, BOREDOM_SPEED)
