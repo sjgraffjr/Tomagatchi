@@ -1,7 +1,7 @@
-const AGE_SPEED = 8000;
-const HUNGER_SPEED = 8000;
-const SLEEPINESS_SPEED = 8000;
-const BOREDOM_SPEED = 8000;
+const AGE_SPEED = 4000;
+const HUNGER_SPEED = 4000;
+const SLEEPINESS_SPEED = 4000;
+const BOREDOM_SPEED = 4000;
 
 class Timer {
 	
