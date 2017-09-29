@@ -1,18 +1,21 @@
-const TIMER_SPEED = 8000;
+const AGE_SPEED = 8000;
+const HUNGER_SPEED = 8000;
+const SLEEPINESS_SPEED = 8000;
+const BOREDOM_SPEED = 8000;
 
 class Timer {
 	
-//static methods you call on the class
-//instance methods you call on the instance
+	// using a class method because the timer doesn't have its own data
+	// for example how long its been running
+	static start(model){ 
 
-	static start(model){ //we made this static 
 		setInterval(()=>{
 			model.age += 1
-			if(model.age === 100){
+			if(model.age === 15){
 				model.death() //death is called
 			}
 			window.render() //calling the render function because data is changed
-		},TIMER_SPEED)
+		}, AGE_SPEED)
 
 		setInterval(()=>{
 			model.hunger += 1
@@ -20,7 +23,8 @@ class Timer {
 				model.death()  //death is called
 			}
 			window.render()//calling the render function because data is changed
-		},TIMER_SPEED)
+		}, HUNGER_SPEED)
+
 		setInterval(()=>{
 			if($('#app').hasClass('dark')){
 				model.sleepiness -= 1
@@ -31,7 +35,7 @@ class Timer {
 				model.death()  //death is called
 			}
 			window.render()//calling the render function because data is changed
-		},TIMER_SPEED)
+		}, SLEEPINESS_SPEED)
 
 		setInterval(()=>{
 			this.model.boredom += 1
@@ -39,7 +43,7 @@ class Timer {
 				this.model.death()  //death is called
 			}
 			window.render()//calling the render function because data is changed
-		},TIMER_SPEED)
+		}, BOREDOM_SPEED)
 	}
 
 }

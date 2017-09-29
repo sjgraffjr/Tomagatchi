@@ -1,3 +1,6 @@
+const SQUIRTLE_IMAGE = "https://i.pinimg.com/originals/93/48/9a/93489a169bffb800bcccef095c388fe0.png"
+const WARTURTLE_IMAGE = "https://cdn.bulbagarden.net/upload/thumb/0/0c/008Wartortle.png/250px-008Wartortle.png"
+const BLASTIOSE_IMAGE = "https://pre00.deviantart.net/f57c/th/pre/i/2013/247/4/6/mega_blastoise_by_protocol00-d6l1fpt.png"
  class Tomagotchi {
 	constructor(name,hunger,sleepiness,boredom,age){
 		this.name = name;
@@ -13,11 +16,11 @@
 	}
 	image(){
 		if(this.age < 5){
-			return 'https://i.pinimg.com/originals/93/48/9a/93489a169bffb800bcccef095c388fe0.png'
+			return SQUIRTLE_IMAGE
 		}else if(this.age < 8){
-			return 'https://cdn.bulbagarden.net/upload/thumb/0/0c/008Wartortle.png/250px-008Wartortle.png'
+			return WARTURTLE_IMAGE
 		}else{
-			return 'https://pre00.deviantart.net/f57c/th/pre/i/2013/247/4/6/mega_blastoise_by_protocol00-d6l1fpt.png'
+			return BLASTIOSE_IMAGE
 		}
 	}
 }

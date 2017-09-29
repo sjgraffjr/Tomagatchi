@@ -1,6 +1,6 @@
  class ButtonView { //this shows the button 
  		constructor(model){
-	 			this.model = model; //model has the data from above//don't really understand this. 
+	 			this.model = model; //model has the data from above 
 	 		}
  	render(){
  		const $el = $( 
@@ -10,6 +10,8 @@
 	 				<button>play</button>
 	 			</div>`
  				)
+
+ 		
  		$el.find('button').on('click',(e)=>{
  			if(e.currentTarget.textContent === 'feed'){ // listen for click events on feed button
  				this.model.hunger -= 1
